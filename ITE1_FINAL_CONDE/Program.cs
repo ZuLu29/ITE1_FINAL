@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace ITE1_FINAL_CONDE
 {
-    internal class Program
+    class Menu
+    {
+        
+    }
+    class Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("halloworldsss");
-            Console.WriteLine("I'm Mark Neil S. Conde");
+
         }
     }
 }
