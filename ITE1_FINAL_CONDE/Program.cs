@@ -8,7 +8,14 @@ namespace ITE1_FINAL_CONDE
 {
     class Menu
     {
-        
+        public void Display()
+        {
+            Console.WriteLine("=====MAIN MENU=====");
+            Console.WriteLine("[1] Store to ASEAN phonebook");
+            Console.WriteLine("[2] Edit entry in ASEAN phonebook");
+            Console.WriteLine("[3] Search ASEAN phonebook by country ");
+            Console.WriteLine("[4] Exit");
+        }
     }
     class Test
     {
