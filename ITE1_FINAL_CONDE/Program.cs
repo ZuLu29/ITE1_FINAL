@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace ITE1_FINAL_CONDE
 {
-    class Menu
+    class UserInfo
     {
-        public void Display()
-        {
-            
-        }
-    }
+        public string StudentNumber { get; set; }
+        public string Surname { get; set; }
+        public string FirstName { get; set; }
+        public string Occupation { get; set; }
+        public char Gender { get; set; }
+        public int CountryCode { get; set; }
+        public int AreaCode { get; set; }
+        public int PhoneNumber { get; set; }
+    }   
     class Test
     {
         static void Main(string[] args)
@@ -25,6 +29,8 @@ namespace ITE1_FINAL_CONDE
 
             Console.WriteLine("Enter Choice");
             int choice = Convert.ToInt32(Console.ReadLine());
+
+
         }
     }
 }
