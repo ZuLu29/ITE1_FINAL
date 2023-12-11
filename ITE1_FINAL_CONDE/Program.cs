@@ -101,7 +101,42 @@ namespace ITE1_FINAL_CONDE
                 Console.WriteLine("[8] Phone number");
                 Console.WriteLine("[9] None go back to the main menu");
 
+                Console.Write("Enter choice: ");
+                if (int.TryParse(Console.ReadLine(), out choice))
+                {
+                    switch(choice)
+                    {
+                        case 1:
+                            Console.Write("Enter new student number: ");
+                            userEdit.StudentNumber = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.Write("Enter new surname: ");
+                            userEdit.Surname = Console.ReadLine();
+                            break;
+                        case 3:
+                            Console.Write("Enter new firstname: ");
+                            userEdit.FirstName = Console.ReadLine();
+                            break;
+                        case 4:
+                            Console.Write("Enter new gender (M for male, F for female): ");
+                            char gender;
+                            if (char.TryParse(Console.ReadLine(),out gender))
+                            {
+                                userEdit.Gender = char.ToUpper(gender);
+                                pronoun = (gender == 'M') ? "His" : "Her";
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid gender input. Gender remains unchange.");
+                            }
+                            break;
+                        case 5:
 
+
+
+                    }
+                }
             } 
         }
 
