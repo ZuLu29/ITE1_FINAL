@@ -49,14 +49,11 @@ namespace ITE1_FINAL_CONDE
             } while (Console.ReadLine().ToUpper() == "Y");
         }
     }
-
-
     class Test
     {
         static void Main(string[] args)
         {
             ASEANPhonebook phonebook = new ASEANPhonebook();
-
             while (true)
             {
                 Console.WriteLine("=====MAIN MENU=====");
@@ -65,7 +62,7 @@ namespace ITE1_FINAL_CONDE
                 Console.WriteLine("[3] Search ASEAN phonebook by country ");
                 Console.WriteLine("[4] Exit");
 
-                Console.WriteLine("Enter Choice");
+                Console.Write("Enter Choice: ");
                 int choice;
                 if (int.TryParse(Console.ReadLine(), out choice))
                 {
