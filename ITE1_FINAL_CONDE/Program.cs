@@ -15,7 +15,19 @@ namespace ITE1_FINAL_CONDE
         public char Gender { get; set; }
         public int CountryCode { get; set; }
         public int AreaCode { get; set; }
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
+
+        public UserInfo(string studentNumber, string surname, string firstname, string occumation, char gender, int countryCode, int areaCode, long phoneNumber)
+        {
+            StudentNumber = studentNumber;
+            Surname = surname;
+            FirstName = firstname;
+            Occupation = occumation;
+            Gender = gender;
+            CountryCode = countryCode;
+            AreaCode = areaCode;
+            PhoneNumber = phoneNumber;
+        }
     }  
     
     class ASEANPhonebook
@@ -48,6 +60,25 @@ namespace ITE1_FINAL_CONDE
                 Console.Write("Do you want to enter another entry (Y/N)? ");
             } while (Console.ReadLine().ToUpper() == "Y");
         }
+        public void EditEntry()
+        {
+            Console.WriteLine("Enter the student number that you want to edit: ");
+            string userNumberEdit = Console.ReadLine();
+            UserInfo userEdit = users.FirstOrDefault(users => users.StudentNumber == userNumberEdit);
+            if (userEdit == null)
+            {
+                Console.WriteLine("Student not found. Cannot proceed with editing.");
+                return;
+            }
+            int choice;
+            do
+            {
+                Console.WriteLine($"Here is the existing information about {userNumberEdit}:");
+                string pronoun = (userNumberEdit.gender == "M") ? "His" : "her";
+            }
+        }
+
+
     }
     class Test
     {
@@ -69,6 +100,15 @@ namespace ITE1_FINAL_CONDE
                     switch (choice)
                     {
                         case 1:
+                            phonebook.StoreEntry();
+                            break;
+                        case 2:
+                            phonebook.StoreEntry();
+                            break;
+                        case 3:
+                            phonebook.StoreEntry();
+                            break;
+                        case 4:
                             phonebook.StoreEntry();
                             break;
                     }
