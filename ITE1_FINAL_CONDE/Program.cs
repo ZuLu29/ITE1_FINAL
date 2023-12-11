@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -104,7 +105,7 @@ namespace ITE1_FINAL_CONDE
                 Console.Write("Enter choice: ");
                 if (int.TryParse(Console.ReadLine(), out choice))
                 {
-                    switch(choice)
+                    switch (choice)
                     {
                         case 1:
                             Console.Write("Enter new student number: ");
@@ -121,26 +122,57 @@ namespace ITE1_FINAL_CONDE
                         case 4:
                             Console.Write("Enter new gender (M for male, F for female): ");
                             char gender;
-                            if (char.TryParse(Console.ReadLine(),out gender))
-                            {
-                                userEdit.Gender = char.ToUpper(gender);
-                                pronoun = (gender == 'M') ? "His" : "Her";
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid gender input. Gender remains unchange.");
-                            }
+                            char.TryParse(Console.ReadLine(), out gender);
+                            userEdit.Gender = char.ToUpper(gender);
+                            pronoun = (gender == 'M') ? "His" : "Her";
                             break;
                         case 5:
+                            Console.Write("Enter new occupation: ");
+                            userEdit.Occupation = Console.ReadLine();
+                            break;
+                        case 6:
+                            Console.Write("Enter new country code: ");
+                            int countrCode;
+                            int.TryParse(Console.ReadLine(), out countrCode);
+                            userEdit.CountryCode = countrCode;
+                            break;
+                        case 7:
+                            Console.Write("Enter new area code: ");
+                            int areaCode;
+                            int.TryParse(Console.ReadLine(), out areaCode);
+                            userEdit.AreaCode = areaCode;
+                            break;
+                        case 8:
+                            Console.Write("Enter new phone number");
+                            long phoneNumber;
+                            long.TryParse(Console.ReadLine(), out phoneNumber);
+                            userEdit.PhoneNumber = phoneNumber;
+                            break;
+                        case 9:
+                            Console.WriteLine("Go back to the main menu.");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option. Please try again.");
+                            break;
+
 
 
 
                     }
+
+                    if (choice != 9)
+                    {
+                        Console.WriteLine("Updated information");
+                        pronoun = (userEdit.Gender == 'M') ? "His" : "Her";
+                        Console.WriteLine($"{userEdit.FirstName} {userEdit.Surname} is a {userEdit.Occupation}. {pronoun} number is {userEdit.CountryCode}-{userEdit.AreaCode}-{userEdit.PhoneNumber}");
+                    }
                 }
-            } 
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number again.");
+                }
+            } while (choice != 9);
         }
-
-
     }
     class Test
     {
