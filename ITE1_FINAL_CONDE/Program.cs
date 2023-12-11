@@ -87,7 +87,21 @@ namespace ITE1_FINAL_CONDE
             do
             {
                 Console.WriteLine($"Here is the existing information about {userNumberEdit}:");
-                string pronoun = (userNumberEdit.gender == "M") ? "His" : "her";
+                string pronoun = (userEdit.Gender == 'M') ? "His" : "Her";
+                Console.WriteLine($"{userEdit.FirstName} {userEdit.Surname} is a {userEdit.Occupation}. {pronoun} number is {userEdit.CountryCode}-{userEdit.AreaCode}-{userEdit.PhoneNumber}");
+
+                Console.WriteLine("Which of the following information do you want to change? ");
+                Console.WriteLine("[1] Student number");
+                Console.WriteLine("[2] Surname");
+                Console.WriteLine("[3] Firstname");
+                Console.WriteLine("[4] Gender");
+                Console.WriteLine("[5] Occupation");
+                Console.WriteLine("[6] Country code");
+                Console.WriteLine("[7] Area code");
+                Console.WriteLine("[8] Phone number");
+                Console.WriteLine("[9] None go back to the main menu");
+
+
             } 
         }
 
