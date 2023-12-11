@@ -16,21 +16,71 @@ namespace ITE1_FINAL_CONDE
         public int CountryCode { get; set; }
         public int AreaCode { get; set; }
         public int PhoneNumber { get; set; }
-    }   
+    }  
+    
+    class ASEANPhonebook
+    {
+        private List<UserInfo> users = new List<UserInfo>();
+        public void StoreEntry()
+        {
+            do
+            {
+                UserInfo usersInfo = new UserInfo();
+                Console.Write("Enter Student Number: ");
+                usersInfo.StudentNumber = Console.ReadLine();
+                Console.Write("Enter Surname: ");
+                usersInfo.Surname = Console.ReadLine();
+                Console.Write("Enter First Name: ");
+                usersInfo.FirstName = Console.ReadLine();
+                Console.Write("Enter Occupation: ");
+                usersInfo.Occupation = Console.ReadLine();
+                Console.Write("Enter your gender (M) for male, (F) for female: ");
+                usersInfo.Gender = char.Parse(Console.ReadLine());
+                Console.Write("Enter Country Code: ");
+                usersInfo.CountryCode = int.Parse(Console.ReadLine());
+                Console.Write("Enter Area Code: ");
+                usersInfo.AreaCode = int.Parse(Console.ReadLine());
+                Console.Write("Enter Number: ");
+                usersInfo.PhoneNumber = int.Parse(Console.ReadLine());
+
+                users.Add(usersInfo);
+
+                Console.Write("Do you want to enter another entry (Y/N)? ");
+            } while (Console.ReadLine().ToUpper() == "Y");
+        }
+    }
+
+
     class Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=====MAIN MENU=====");
-            Console.WriteLine("[1] Store to ASEAN phonebook");
-            Console.WriteLine("[2] Edit entry in ASEAN phonebook");
-            Console.WriteLine("[3] Search ASEAN phonebook by country ");
-            Console.WriteLine("[4] Exit");
+            ASEANPhonebook phonebook = new ASEANPhonebook();
 
-            Console.WriteLine("Enter Choice");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("=====MAIN MENU=====");
+                Console.WriteLine("[1] Store to ASEAN phonebook");
+                Console.WriteLine("[2] Edit entry in ASEAN phonebook");
+                Console.WriteLine("[3] Search ASEAN phonebook by country ");
+                Console.WriteLine("[4] Exit");
 
-
+                Console.WriteLine("Enter Choice");
+                int choice;
+                if (int.TryParse(Console.ReadLine(), out choice))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            phonebook.StoreEntry();
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input. try again");
+                }
+            }
         }
     }
 }
