@@ -257,6 +257,14 @@ namespace ITE1_FINAL_CONDE
                         case 2:
                             phonebook.EditEntry();
                             break;
+                        case 3:
+                            phonebook.SearchByCountry();
+                            break;
+                        case 4:
+                            Environment.Exit(0);
+                            break;
+                        default: Console.WriteLine("Invalid option");
+                            break;
                     }
                 }
                 else
