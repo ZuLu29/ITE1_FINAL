@@ -211,6 +211,14 @@ namespace ITE1_FINAL_CONDE
                     Console.WriteLine("Invalid input. please try again");
                 }
             } while (true);
+
+            Console.WriteLine("Here's the student: ");
+
+            foreach (var student in selectedStudents.OrderBy(s => s.Surname))
+            {
+                string pronoun = (student.Gender == 'M') ? "His" : "Her";
+                Console.WriteLine($"{student.Surname}, {student.FirstName}, with student number {student.StudentNumber}, is a {student.Occupation}. {pronoun} phone number is {student.CountryCode}-{student.AreaCode}-{student.PhoneNumber}");
+            }
     
         }
         private int GetCountryCodeByChoice(int choice)
