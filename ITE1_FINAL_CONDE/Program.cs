@@ -39,8 +39,7 @@ namespace ITE1_FINAL_CONDE
         {
             do
             {
-                Console.WriteLine("Provide the student details below.");
-
+                Console.WriteLine();
                 Console.Write("Enter student number: ");
                 string studentNumber = Console.ReadLine();
 
@@ -63,7 +62,7 @@ namespace ITE1_FINAL_CONDE
                 Console.Write("Enter area code: ");
                 int areaCode = int.Parse(Console.ReadLine());
 
-                Console.Write("Enter number: ");
+                Console.Write("Enter phone number: ");
                 long phoneNumber = long.Parse(Console.ReadLine());
 
                 UserInfo entry = new UserInfo(studentNumber, surname, firstname, occupation, gender, countryCode, areaCode, phoneNumber);
@@ -76,7 +75,7 @@ namespace ITE1_FINAL_CONDE
         }
         public void EditEntry()
         {
-            Console.WriteLine("Enter the student number that you want to edit: ");
+            Console.WriteLine("Enter the student number of student that you want to edit: ");
             string userNumberEdit = Console.ReadLine();
             UserInfo userEdit = users.FirstOrDefault(users => users.StudentNumber == userNumberEdit);
             if (userEdit == null)
@@ -154,10 +153,6 @@ namespace ITE1_FINAL_CONDE
                         default:
                             Console.WriteLine("Invalid option. Please try again.");
                             break;
-
-
-
-
                     }
 
                     if (choice != 9)
@@ -172,6 +167,69 @@ namespace ITE1_FINAL_CONDE
                     Console.WriteLine("Invalid input. Please enter a number again.");
                 }
             } while (choice != 9);
+        }
+
+        public void SearchByCountry()
+        {
+            List<UserInfo> selectedStudents = new List<UserInfo>();
+
+            int countryChoice;
+            do
+            {
+                Console.WriteLine("From which country");
+                Console.WriteLine("[1] Philppines");
+                Console.WriteLine("[2] Thailand");
+                Console.WriteLine("[3] Singapore");
+                Console.WriteLine("[4] Indonesia");
+                Console.WriteLine("[5] Malaysia");
+                Console.WriteLine("[6] ALL");
+                Console.WriteLine("[7] No more");
+                Console.WriteLine("Enter choice: ");
+
+                if (int.TryParse(Console.ReadLine(), out countryChoice))
+                {
+                    if (countryChoice >= 1 && countryChoice <= 5)
+                    {
+                        int selectedCountryCode = GetCountryCodeByChoice(countryChoice);
+                        selectedStudents.AddRange(users.Where(s => s.CountryCode == selectedCountryCode));
+                    }
+                    else if (countryChoice == 6)
+                    {
+                        selectedStudents.AddRange(users);
+                    }
+                    else if (countryChoice == 7)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input r u dumb??");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. please try again");
+                }
+            } while (true);
+    
+        }
+        private int GetCountryCodeByChoice(int choice)
+        {
+            switch (choice)
+            {
+                case 1:
+                    return 63;
+                case 2:
+                    return 66;
+                case 3:
+                    return 65;
+                case 4:
+                    return 62;
+                case 5:
+                    return 60;
+                default: 
+                    return 0;
+            }
         }
     }
     class Test
